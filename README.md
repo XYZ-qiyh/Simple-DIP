@@ -13,7 +13,7 @@ Simple digital image processing using C language, we borrow some code from [Dark
 
 
 
-2. perform exec file
+2. perform exe file
 
    ```
    ./soble_edge --image_path hello//xxx.jpg
@@ -24,8 +24,8 @@ Simple digital image processing using C language, we borrow some code from [Dark
 
  <table align="center">
   <tr>
-    <td><img src="https://github.com/XYZ-qiyh/Simple-DIP/tree/main/Simple-DIP_Linux/doc/lena.jpg" width="256" height="256"></td>
-    <td><img src="https://github.com/XYZ-qiyh/Simple-DIP/tree/main/Simple-DIP_Linux/doc/outputs/lena-sobel-edge.jpg" width="256" height="256"></td>
+    <td><img src="doc/lena.jpg" width="256" height="256"></td>
+    <td><img src="doc/outputs/lena-sobel-edge.jpg" width="256" height="256"></td>
   </tr>
   <tr>
     <td>Lena.jpg</td>
