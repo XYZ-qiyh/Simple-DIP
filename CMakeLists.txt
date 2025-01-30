@@ -21,6 +21,8 @@ aux_source_directory(src DIR_SRCS)
 
 #add_subdirectory(src)
 
-add_executable(simpleDIP main.c ${DIR_SRCS})
+#message(PROJECT_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
+#message(${DIR_SRCS})
+add_executable(simpleDIP ${DIR_SRCS} "main.cpp")
 
-target_link_libraries(simpleDIP m)
+#target_link_libraries(simpleDIP m)

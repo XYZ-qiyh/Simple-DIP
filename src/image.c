@@ -1114,6 +1114,64 @@ image sobel_edge_detection(image im)
     return edge;
 }
 
+image average_blur(image im)
+{
+    image out = make_image(im.w, im.h, im.c);
+
+    int x, y;
+    for (y = 1; y < im.h-1; ++y) {
+        for (x = 1; x < im.w-1; ++x) {
+            //printf("x: %d, y: %d", x, y);
+            float r = get_pixel(im, x-1, y-1, 0) + get_pixel(im, x, y-1, 0) + get_pixel(im, x+1, y-1, 0)
+                    + get_pixel(im, x-1, y, 0) + get_pixel(im, x, y, 0) + get_pixel(im, x+1, y, 0)
+                    + get_pixel(im, x-1, y+1, 0) + get_pixel(im, x, y+1, 0) + get_pixel(im, x+1, y+1, 0);
+
+            float g = get_pixel(im, x-1, y-1, 1) + get_pixel(im, x, y-1, 1) + get_pixel(im, x+1, y-1, 1)
+                    + get_pixel(im, x-1, y, 1) + get_pixel(im, x, y, 1) + get_pixel(im, x+1, y, 1)
+                    + get_pixel(im, x-1, y+1, 1) + get_pixel(im, x, y+1, 1) + get_pixel(im, x+1, y+1, 1);
+
+            float b = get_pixel(im, x-1, y-1, 2) + get_pixel(im, x, y-1, 2) + get_pixel(im, x+1, y-1, 2)
+                    + get_pixel(im, x-1, y, 2) + get_pixel(im, x, y, 2) + get_pixel(im, x+1, y, 2)
+                    + get_pixel(im, x-1, y+1, 2) + get_pixel(im, x, y+1, 2) + get_pixel(im, x+1, y+1, 2);
+
+            set_pixel(out, x, y, 0, r/9.0f);
+            set_pixel(out, x, y, 1, g/9.0f);
+            set_pixel(out, x, y, 2, b/9.0f);
+        }
+    }
+    return out;
+}
+
+#if 0
+image gaussian_blur(image im)
+{
+    image out = make_image(im.w, im.h, im.c);
+
+    int x, y;
+    for (y = 1; y < im.h-1; ++y) {
+        for (x = 1; x < im.w-1; ++x) {
+            //printf("x: %d, y: %d", x, y);
+            float r = get_pixel(im, x-1, y-1, 0) + get_pixel(im, x, y-1, 0) + get_pixel(im, x+1, y-1, 0)
+                    + get_pixel(im, x-1, y, 0) + get_pixel(im, x, y, 0) + get_pixel(im, x+1, y, 0)
+                    + get_pixel(im, x-1, y+1, 0) + get_pixel(im, x, y+1, 0) + get_pixel(im, x+1, y+1, 0);
+
+            float g = get_pixel(im, x-1, y-1, 1) + get_pixel(im, x, y-1, 1) + get_pixel(im, x+1, y-1, 1)
+                    + get_pixel(im, x-1, y, 1) + get_pixel(im, x, y, 1) + get_pixel(im, x+1, y, 1)
+                    + get_pixel(im, x-1, y+1, 1) + get_pixel(im, x, y+1, 1) + get_pixel(im, x+1, y+1, 1);
+
+            float b = get_pixel(im, x-1, y-1, 2) + get_pixel(im, x, y-1, 2) + get_pixel(im, x+1, y-1, 2)
+                    + get_pixel(im, x-1, y, 2) + get_pixel(im, x, y, 2) + get_pixel(im, x+1, y, 2)
+                    + get_pixel(im, x-1, y+1, 2) + get_pixel(im, x, y+1, 2) + get_pixel(im, x+1, y+1, 2);
+
+            set_pixel(out, x, y, 0, r/9.0f);
+            set_pixel(out, x, y, 1, g/9.0f);
+            set_pixel(out, x, y, 2, b/9.0f);
+        }
+    }
+    return out;
+}
+#endif
+
 image threshold_image(image im, float thresh)
 {
     int i;

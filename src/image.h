@@ -92,9 +92,14 @@ image get_image_layer(image m, int l);
 //utils.h
 //utils.h END
 
-//edge detection
+// edge detection
 image sobel_edge_detection(image im);
 
+// average blur
+image average_blur(image im);
+
+// gaussian blur
+image gaussian_blur(image im);
 
 #ifdef __cplusplus
 }
